@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            margin-bottom: 40px;
+        }
+        label, input, button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Kalkulator Sederhana -->
+    <h2>Kalkulator Sederhana</h2>
+    <label for="bil1">Bilangan 1:</label><br>
+    <input type="number" id="bil1" placeholder="Masukkan bilangan pertama"><br>
+    <label for="bil2">Bilangan 2:</label><br>
+    <input type="number" id="bil2" placeholder="Masukkan bilangan kedua"><br>
+    <button onclick="hitung('+')">+</button>
+    <button onclick="hitung('-')">-</button>
+    <button onclick="hitung('*')">x</button>
+    <button onclick="hitung('/')">/</button>
+    <p>Hasil: <span id="hasil">-</span></p>
+
+    <script>
+        // Fungsi untuk kalkulator sederhana
+        function hitung(operator) {
+            const bil1 = parseFloat(document.getElementById('bil1').value);
+            const bil2 = parseFloat(document.getElementById('bil2').value);
+            let hasil;
+
+            if (isNaN(bil1) || isNaN(bil2)) {
+                hasil = 'Masukkan kedua bilangan';
+            } else {
+                switch (operator) {
+                    case '+':
+                        hasil = bil1 + bil2;
+                        break;
+                    case '-':
+                        hasil = bil1 - bil2;
+                        break;
+                    case '*':
+                        hasil = bil1 * bil2;
+                        break;
+                    case '/':
+                        hasil = bil2 !== 0 ? bil1 / bil2 : 'Tidak dapat membagi dengan nol';
+                        break;
+                    default:
+                        hasil = 'Operator tidak valid';
+                }
+            }
+
+            document.getElementById('hasil').innerText = hasil;
+        }
+
+        // Menampilkan tanggal terakhir dimodifikasi
+        document.write("<p>Dimodifikasi terakhir pada " + document.lastModified + "</p>");
+    </script>
+</body>
+</html>
